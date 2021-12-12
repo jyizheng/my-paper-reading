@@ -45,7 +45,7 @@ paginate: true
 
 ---
 
-### Focus of LLAMA
+### Focuses of LLAMA
 
 - A Data Component in Deuteronomy
 - Manage storage and retrieval of data accessed
@@ -78,9 +78,29 @@ LLAMA manages on-disk data and state
     - Decoupled from TXNs and WAL
 - Storage
     - Log-structuring to avoid random writes
-    - Partial page flushes
-    - Low write amplification (Good for flash)
+    - Partial page flushes (low write amplification)
     - No internal fragmentaion
-
+- System TXNs decoupled from user TXNs
 
 ---
+### Page Data Operations
+
+- Two types of Operations
+    - CRUD
+    - Structure changes
+- Two updates
+    - Delta update
+    - Replacement update
+- Three APIs
+    - Update-D(PID, in-ptr, out-ptr, data)
+    - Update-R(PID, in-ptr, out-ptr, data)
+    - Read(PID, out-ptr)
+
+--- 
+### Page Management Operations
+
+- Manage <span style="color:red;">existence, location and persistence</span> of pages
+    - Flush pages to secondary storage
+    - Annotate pages for efficiency (LSN)
+- Five APIs
+    - 
